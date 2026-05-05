@@ -65,3 +65,24 @@ function addTask() {
   renderTasks();
   taskInput.value = '';
 }
+
+function toggleTask(id) {
+  task.forEach((task) => {
+    if (task.id === id) {
+      task.completed = !task.completed;
+    }
+  });
+
+  saveTasks();
+  renderTasks();
+}
+
+
+function deleteTask(id) {
+  tasks = tasks.filter((task) => {
+    task.id !==id;
+  });
+
+  saveTasks();
+  renderTasks();
+}
