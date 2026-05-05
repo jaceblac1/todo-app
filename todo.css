@@ -72,3 +72,8 @@ button{
   margin-bottom: 15px;
   font-size: 14px;
 }
+
+small{
+  color: gray;
+  font-size: 12px;
+}

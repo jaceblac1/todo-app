@@ -32,7 +32,13 @@ function renderTasks() {
       li.classList.add("completed");
     }
     li.innerHTML = `
-      <span>${task.title}</span>
+      <div>
+        <h3>${task.title}</h3>
+        <small>
+          Created: ${task.createdAt}
+        </small>
+      </div>
+
       <div>
         <button onclick="toggleTask(${task.id})">
           ${task.completed ? "Undo" : "completed"}
@@ -56,7 +62,7 @@ function addTask() {
     setTimeout(() => {
       message.textContent = '';
     }, 2000);
-    
+
     return;
   } 
 
@@ -64,7 +70,7 @@ function addTask() {
     id: Date.now(),
     title: title,
     completed: false,
-    createdAt: new Date().toISOString(),
+    createdAt: new Date().toLocaleString(),
   };
 
   tasks.push(newTask);
