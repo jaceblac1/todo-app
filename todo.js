@@ -44,3 +44,24 @@ function renderTasks() {
     taskList.appendChild(li);
   });
 }
+
+function addTask() {
+  const title = taskInput.value.trim();
+
+  if (title === '') {
+    alert('Task cannot be empty');
+    return;
+  }
+
+  const newTask = {
+    id: Date.now(),
+    title: title,
+    completed: false,
+    createdAt: newDate().toISOString()
+  };
+
+  tasks.push(newTask);
+  saveTasks();
+  renderTasks();
+  taskInput.value = '';
+}
