@@ -2,6 +2,7 @@ const taskInput = document.getElementById("taskInput");
 const addBtn = document.getElementById("addBtn");
 const taskList = document.getElementById("taskList");
 const filterButtons = document.querySelectorAll(".filters button");
+const message = document.getElementById('message')
 
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
@@ -51,9 +52,13 @@ function addTask() {
   const title = taskInput.value.trim();
 
   if (title === "") {
-    alert("Task cannot be empty");
+    message.textContent = 'Task cannot be empty';
+    setTimeout(() => {
+      message.textContent = '';
+    }, 2000);
+    
     return;
-  }
+  } 
 
   const newTask = {
     id: Date.now(),
