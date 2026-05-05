@@ -57,7 +57,7 @@ function addTask() {
     id: Date.now(),
     title: title,
     completed: false,
-    createdAt: newDate().toISOString()
+    createdAt: new Date().toISOString()
   };
 
   tasks.push(newTask);
@@ -86,3 +86,23 @@ function deleteTask(id) {
   saveTasks();
   renderTasks();
 }
+
+addBtn.addEventListener('click', () => {
+  addTask();
+});
+
+taskInput.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    addTask();
+  }
+});
+
+filterButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    currentFilter = button.dataset.filter;
+
+    renderTasks();
+    });
+});
+
+renderTasks();
